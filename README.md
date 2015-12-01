@@ -43,7 +43,8 @@ docbase.post.create(domain, params).then(post => {
 });
 ```
 
-#### set DOCBASE_API_TOKEN instead of `DocBaseApi`'s option.
+#### More Info
+set DOCBASE_API_TOKEN instead of `DocBaseApi`'s option.
 
 ```
 $ export DOCBASE_API_TOKEN=xxxxxxxxxx
@@ -61,6 +62,13 @@ $ export DOCBASE_API_TOKEN=xxxxxxxxxx
 ## License
 MIT
 
+## Test
+
+```
+$ export DOCBASE_API_TOKEN=xxxxxxxxxx
+$ npm test
+```
+
 ## Reference
 
-(DocBase APIドキュメント)[https://help.docbase.io/posts/45703]
+[DocBase APIドキュメント](https://help.docbase.io/posts/45703)
