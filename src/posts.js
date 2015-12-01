@@ -1,6 +1,6 @@
 "use strict";
 
-import Base from '../base/index.js';
+import Base from './base.js';
 
 export default class Posts extends Base{
 

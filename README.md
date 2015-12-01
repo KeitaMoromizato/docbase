@@ -13,7 +13,7 @@ $ npm install docbase
 ### Get Your team
 
 ```
-import DocBaseApi from '../../src/index.js';
+import DocBaseApi from 'docbase';
 
 const docbase = new DocBaseApi({
   token: 'xxxxxxxxxxxxx'

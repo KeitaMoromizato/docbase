@@ -1,9 +1,9 @@
 'use strict';
 
-import team from './teams/index.js';
-import tag from './tags/index.js';
-import group from './groups/index.js';
-import post from './posts/index.js';
+import team from './teams.js';
+import tag from './tags.js';
+import group from './groups.js';
+import post from './posts.js';
 
 export default function(options = {}) {
 
