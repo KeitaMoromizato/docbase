@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/KeitaMoromizato/docbase.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This module provides an easy way to use DocBase API.",
   "main": "lib/index.js",
   "scripts": {
