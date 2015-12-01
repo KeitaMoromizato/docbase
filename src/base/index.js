@@ -19,10 +19,11 @@ export default class Base {
         headers: {
           'X-DocBaseToken': this.token,
           'X-Api-Version': this.version
-        }
+        },
+        json: true
       }, (error, response, body) => {
         if (error || response.statusCode !== 200) return reject(error || body);
-        console.log(body);
+
         resolve(body);
       });
     });

@@ -1,6 +1,8 @@
 'use strict';
 
 import team from './teams/index.js';
+import tag from './tags/index.js';
+import group from './groups/index.js';
 
 export default function(options = {}) {
 
@@ -12,4 +14,6 @@ export default function(options = {}) {
   }
 
   this.team = new team(token, version);
+  this.tag = new tag(token, version);
+  this.group = new group(token, version);
 }
