@@ -9,7 +9,7 @@ describe('Docbase Group API', () => {
     version: 1
   });
 
-  context('GET /group', () => {
+  context('GET /teams/:domain/groups', () => {
 
     it('should return groups', done => {
 
@@ -18,7 +18,7 @@ describe('Docbase Group API', () => {
 
         const domain = teams[0].domain;
 
-        return docbase.group.find({domain: domain});
+        return docbase.group.find(domain);
       }).then(groups => {
 
         assert(groups.length > 0);

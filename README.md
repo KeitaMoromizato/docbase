@@ -10,6 +10,8 @@ $ npm install docbase
 
 ## Example
 
+### Get Your team
+
 ```
 import DocBaseApi from '../../src/index.js';
 
@@ -24,7 +26,24 @@ docbase.team.find().then(teams => {
 });
 ```
 
-or set DOCBASE_API_TOKEN instead of `DocBaseApi`'s option.
+### POST your articles
+
+```
+const params = {
+  title: 'test title',
+  body: 'test body',
+  draft: false,
+  tags: ['test'],
+  scope: 'group',
+  groups: [1],
+  notice: false
+};
+
+docbase.post.create(domain, params).then(post => {
+});
+```
+
+#### set DOCBASE_API_TOKEN instead of `DocBaseApi`'s option.
 
 ```
 $ export DOCBASE_API_TOKEN=xxxxxxxxxx
@@ -35,8 +54,9 @@ $ export DOCBASE_API_TOKEN=xxxxxxxxxx
 |URL|on this module|params|
 |---|---|---|
 |GET /teams| docbase.team.find | - |
-|GET /teams/:domain/groups| docbase.group.find | {domain: 'xxxx'}|
-|GET /teams/:domain/tags| docbase.tags.find | {domain: 'xxxx'}|
+|GET /teams/:domain/groups| docbase.group.find(domainName)|
+|GET /teams/:domain/tags| docbase.tags.find(domainName)|
+|POST /teams/:domain/posts| docbase.post.create(domainName, params)|
 
 ## License
 MIT

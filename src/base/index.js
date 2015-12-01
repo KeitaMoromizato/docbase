@@ -11,11 +11,10 @@ export default class Base {
     this.version = version;
   }
 
-  requestWithToken(url, method, params = {}) {
+  get(url) {
     return new Promise((resolve, reject) => {
-      request({
+      request.get({
         url: url,
-        method: method,
         headers: {
           'X-DocBaseToken': this.token,
           'X-Api-Version': this.version
@@ -23,6 +22,25 @@ export default class Base {
         json: true
       }, (error, response, body) => {
         if (error || response.statusCode !== 200) return reject(error || body);
+
+        resolve(body);
+      });
+    });
+  }
+
+  post(url, options) {
+    return new Promise((resolve, reject) => {
+      request.post({
+        url: url,
+        headers: {
+          'X-DocBaseToken': this.token,
+          'X-Api-Version': this.version
+        },
+        body: options,
+        json: true
+      }, (error, response, body) => {
+        // TODO 201 is only POST /post ??
+        if (error || response.statusCode !== 201) return reject(error || body);
 
         resolve(body);
       });

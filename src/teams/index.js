@@ -6,7 +6,7 @@ export default class Teams extends Base{
 
   find() {
     return new Promise((resolve, reject) => {
-      this.requestWithToken(this.getURL(), 'GET').then(resolve, reject);
+      this.get(this.getURL()).then(resolve, reject);
     });
   }
 

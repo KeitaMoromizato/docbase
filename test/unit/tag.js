@@ -9,7 +9,7 @@ describe('Docbase Group API', () => {
     version: 1
   });
 
-  context('GET /tag', () => {
+  context('GET /teams/:domain/tags', () => {
 
     it('should return tags', done => {
 
@@ -18,7 +18,7 @@ describe('Docbase Group API', () => {
 
         const domain = teams[0].domain;
 
-        return docbase.tag.find({domain: domain});
+        return docbase.tag.find(domain);
       }).then(tags => {
 
         assert(tags.length > 0);
