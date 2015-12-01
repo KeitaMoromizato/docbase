@@ -52,9 +52,9 @@ $ export DOCBASE_API_TOKEN=xxxxxxxxxx
 
 ## APIs
 
-|URL|on this module|params|
-|---|---|---|
-|GET /teams| docbase.team.find | - |
+|URL|on this module|
+|---|---|
+|GET /teams| docbase.team.find |
 |GET /teams/:domain/groups| docbase.group.find(domainName)|
 |GET /teams/:domain/tags| docbase.tags.find(domainName)|
 |POST /teams/:domain/posts| docbase.post.create(domainName, params)|
