@@ -11,10 +11,13 @@ export default class Base {
     this.version = version;
   }
 
-  get(url) {
+  get(url, params = {}) {
     return new Promise((resolve, reject) => {
+      const keys = Object.keys(params);
+      const urlParams = keys.length ? keys.reduce((memo, key) => memo + `${key}=${params[key]}&`, '?') : '';
+
       request.get({
-        url: url,
+        url: url + urlParams,
         headers: {
           'X-DocBaseToken': this.token,
           'X-Api-Version': this.version

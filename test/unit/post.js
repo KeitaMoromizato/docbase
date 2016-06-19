@@ -10,6 +10,30 @@ describe('Docbase Post API', () => {
     version: 1
   });
 
+  context('GET /teams/:domain/posts/:id', () => {
+
+    it('should return post', (done) => {
+      let domain;
+
+      docbase.team.find().then(teams => {
+        assert(teams.length > 0);
+
+        domain = teams[0].domain;
+
+        return docbase.post.search(domain, {q : ''});
+      }).then(res => {
+
+        assert(res.posts.length > 0);
+
+        return docbase.post.find(domain, res.posts[0].id);
+      }).then(post => {
+
+        assert(post);
+
+      }).then(done, done);
+    });
+  });
+
   context('POST /teams/:domain/posts', () => {
     // TODO This test should use mock API.
 /*
