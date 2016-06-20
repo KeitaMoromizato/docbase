@@ -20,7 +20,14 @@ export default class Posts extends Base {
     return new Promise((resolve, reject) => {
       if (!domain) return reject(new Error(`Posts.search# domain not set`));
 
-      this.get(this.getURL(domain), params).then(posts => {
+      const urlParams = {
+        q: params.q,
+        author: params.author || '',
+        group: params.group || '',
+        tag: params.tag || ''
+      };
+
+      this.get(this.getURL(domain), urlParams).then(posts => {
         resolve(posts);
       }).catch(error => {
         reject(error);

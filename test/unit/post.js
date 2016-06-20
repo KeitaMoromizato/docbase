@@ -28,7 +28,7 @@ describe('Docbase Post API', () => {
         return docbase.post.find(domain, res.posts[0].id);
       }).then(post => {
 
-        assert(post);
+        assert(post.id);
 
       }).then(done, done);
     });
