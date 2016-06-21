@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/KeitaMoromizato/docbase.git"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This module provides an easy way to use DocBase API.",
   "main": "lib/index.js",
   "scripts": {
@@ -24,13 +24,14 @@
   "email": "keita.moromi@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.34",
-    "espower-babel": "^3.3.0",
-    "mocha": "^2.3.4",
-    "power-assert": "^1.2.0"
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "espower-babel": "^4.0.3",
+    "mocha": "^2.5.3",
+    "power-assert": "^1.4.1"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
     "request": "^2.67.0"
   }
 }

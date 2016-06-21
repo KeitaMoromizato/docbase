@@ -16,18 +16,17 @@ export default class Posts extends Base {
     });
   }
 
-  search(domain, params) {
+  search(domain, params = {}) {
     return new Promise((resolve, reject) => {
       if (!domain) return reject(new Error(`Posts.search# domain not set`));
 
-      const urlParams = {
-        q: params.q,
-        author: params.author || '',
-        group: params.group || '',
-        tag: params.tag || ''
-      };
+      const hasOptions = Object.keys(params).length;
 
-      this.get(this.getURL(domain), urlParams).then(posts => {
+      const q = hasOptions ?
+        `?q=${params.q || ''}` + Object.keys(params).filter(key => key !== 'q').reduce((memo, key) => `${memo}${key}:${encodeURIComponent(params[key])} `, '')
+        : '';
+
+      this.get(this.getURL(domain) + q).then(posts => {
         resolve(posts);
       }).catch(error => {
         reject(error);

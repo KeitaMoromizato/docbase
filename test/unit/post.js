@@ -1,13 +1,75 @@
 "use strict";
 
 import assert from 'power-assert';
-import {assign} from 'lodash';
 import DocbaseApi from '../../src/index.js';
 
 describe('Docbase Post API', () => {
 
   const docbase = new DocbaseApi({
     version: 1
+  });
+
+  let domain;
+  before(done => {
+    docbase.team.find().then(teams => {
+      domain = teams[0].domain;
+      done();
+    }).catch(done);
+  });
+
+  context('GET /teams/:domain/posts', () => {
+
+    it('should return posts', done => {
+
+      docbase.post.search(domain).then(res => {
+
+        assert(res.posts.length > 0);
+
+      }).then(done, done);
+    });
+
+    it('should return posts in author', done => {
+
+      const author = 'keita_moromizato';
+
+      docbase.post.search(domain, {
+        author: author
+      }).then(res => {
+
+        assert(res.posts.length > 0);
+        res.posts.forEach(p => assert(p.user.name === 'keita_moromizato'));
+
+      }).then(done, done);
+    });
+
+    it('should return posts in group', done => {
+
+      const group = '日報';
+
+      docbase.post.search(domain, {
+        group: group
+      }).then(res => {
+
+        assert(res.posts.length > 0);
+        res.posts.forEach(p => assert(p.groups.filter(g => g.name === group).length));
+
+      }).then(done, done);
+    });
+
+
+    it('should return posts attached tag', done => {
+
+      const tag = '日報';
+
+      docbase.post.search(domain, {
+        tag: tag
+      }).then(res => {
+
+        assert(res.posts.length > 0);
+        res.posts.forEach(p => assert(p.tags.filter(t => tag).length));
+
+      }).then(done, done);
+    });
   });
 
   context('GET /teams/:domain/posts/:id', () => {
